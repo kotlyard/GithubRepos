@@ -9,14 +9,17 @@ import UIKit
 
 struct RepoViewModel {
 
+    let id: Int
     let name: String
     let ownerLogin: String
     let starsCount: Int
 
     init(with repo: Repo) {
-        name = repo.fullName
+        id = repo.id
+        name = repo.name
         ownerLogin = repo.owner.login
-        starsCount = repo.stargazersCount
+        starsCount = repo.stargazers_count
     }
 
 }
+

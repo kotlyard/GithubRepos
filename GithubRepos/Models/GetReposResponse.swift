@@ -7,11 +7,10 @@
 
 import Foundation
 
-// MARK: - GetReviewsResponse
 struct GetReposResponse: Decodable {
 
-    let totalCount: Int
-    let incompleteResults: Bool
+    let total_count: Int
+    let incomplete_results: Bool
     let items: [Repo]
 
 }

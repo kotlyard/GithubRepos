@@ -9,15 +9,34 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    private var repos = [RepoViewModel]()
+    private var repos = [RepoViewModel]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+
+    private let networkService: NetworkServiceProvidable = NetworkService()
+
+//    @UserDefaultsBacked(key: "reviewedRepoIds", defaultValue: [])
+//    private var reviewedRepoIds
 
     @IBOutlet private weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         let nib = UINib(nibName: "RepoTableViewCell", bundle: .main)
         tableView.register(nib, forCellReuseIdentifier: "repoCell")
+        
+        var request = GetReposRequest()
+        request.q = "sas"
+        networkService.getRepos(request: request) { (response, error) in
+            print(response)
+            guard let repos = response else { return }
+            self.repos = repos.items.map { RepoViewModel(with: $0) }
+        }
     }
 
 

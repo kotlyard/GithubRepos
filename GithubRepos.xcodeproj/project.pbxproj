@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		023932C62591F51000F733AD /* UserDefaultsBacked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023932C52591F51000F733AD /* UserDefaultsBacked.swift */; };
+		023932C92591F68000F733AD /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023932C82591F68000F733AD /* NetworkService.swift */; };
+		023932CC2592430400F733AD /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023932CB2592430400F733AD /* Owner.swift */; };
 		0281617B2590C3C700C3FA0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281617A2590C3C700C3FA0C /* AppDelegate.swift */; };
 		0281617D2590C3C700C3FA0C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281617C2590C3C700C3FA0C /* SceneDelegate.swift */; };
 		0281617F2590C3C700C3FA0C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281617E2590C3C700C3FA0C /* ViewController.swift */; };
@@ -23,7 +26,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		028161772590C3C700C3FA0C /* GithubReposMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubReposMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		023932C52591F51000F733AD /* UserDefaultsBacked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsBacked.swift; sourceTree = "<group>"; };
+		023932C82591F68000F733AD /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		023932CB2592430400F733AD /* Owner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
+		028161772590C3C700C3FA0C /* GithubRepos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubRepos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0281617A2590C3C700C3FA0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0281617C2590C3C700C3FA0C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0281617E2590C3C700C3FA0C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,7 +60,7 @@
 		0281616E2590C3C600C3FA0C = {
 			isa = PBXGroup;
 			children = (
-				028161792590C3C700C3FA0C /* GithubReposMVVM */,
+				028161792590C3C700C3FA0C /* GithubRepos */,
 				028161782590C3C700C3FA0C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -62,15 +68,16 @@
 		028161782590C3C700C3FA0C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				028161772590C3C700C3FA0C /* GithubReposMVVM.app */,
+				028161772590C3C700C3FA0C /* GithubRepos.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		028161792590C3C700C3FA0C /* GithubReposMVVM */ = {
+		028161792590C3C700C3FA0C /* GithubRepos */ = {
 			isa = PBXGroup;
 			children = (
 				0281617A2590C3C700C3FA0C /* AppDelegate.swift */,
+				023932C82591F68000F733AD /* NetworkService.swift */,
 				0281617C2590C3C700C3FA0C /* SceneDelegate.swift */,
 				02EF5DF52591E33D00700FC6 /* Models */,
 				02EF5E032591F0B000700FC6 /* ViewModels */,
@@ -81,13 +88,14 @@
 				028161832590C3C900C3FA0C /* Assets.xcassets */,
 				028161882590C3C900C3FA0C /* Info.plist */,
 			);
-			path = GithubReposMVVM;
+			path = GithubRepos;
 			sourceTree = "<group>";
 		};
 		02EF5DF52591E33D00700FC6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				02EF5DEF2591E13C00700FC6 /* Repo.swift */,
+				023932CB2592430400F733AD /* Owner.swift */,
 				02EF5DFC2591E59200700FC6 /* GetReposRequest.swift */,
 				02EF5DF72591E3A300700FC6 /* GetReposResponse.swift */,
 			);
@@ -132,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				02EF5DFF2591F04500700FC6 /* Encodable+Extensions.swift */,
+				023932C52591F51000F733AD /* UserDefaultsBacked.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -139,9 +148,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		028161762590C3C700C3FA0C /* GithubReposMVVM */ = {
+		028161762590C3C700C3FA0C /* GithubRepos */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0281618B2590C3C900C3FA0C /* Build configuration list for PBXNativeTarget "GithubReposMVVM" */;
+			buildConfigurationList = 0281618B2590C3C900C3FA0C /* Build configuration list for PBXNativeTarget "GithubRepos" */;
 			buildPhases = (
 				028161732590C3C700C3FA0C /* Sources */,
 				028161742590C3C700C3FA0C /* Frameworks */,
@@ -151,9 +160,9 @@
 			);
 			dependencies = (
 			);
-			name = GithubReposMVVM;
+			name = GithubRepos;
 			productName = GithubReposMVVM;
-			productReference = 028161772590C3C700C3FA0C /* GithubReposMVVM.app */;
+			productReference = 028161772590C3C700C3FA0C /* GithubRepos.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -170,7 +179,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 028161722590C3C600C3FA0C /* Build configuration list for PBXProject "GithubReposMVVM" */;
+			buildConfigurationList = 028161722590C3C600C3FA0C /* Build configuration list for PBXProject "GithubRepos" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -183,7 +192,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				028161762590C3C700C3FA0C /* GithubReposMVVM */,
+				028161762590C3C700C3FA0C /* GithubRepos */,
 			);
 		};
 /* End PBXProject section */
@@ -207,12 +216,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				023932C92591F68000F733AD /* NetworkService.swift in Sources */,
+				023932CC2592430400F733AD /* Owner.swift in Sources */,
 				02EF5DF32591E14400700FC6 /* RepoViewModel.swift in Sources */,
 				0281617F2590C3C700C3FA0C /* ViewController.swift in Sources */,
 				02EF5DF02591E13C00700FC6 /* Repo.swift in Sources */,
 				02EF5E002591F04500700FC6 /* Encodable+Extensions.swift in Sources */,
 				02EF5DFD2591E59200700FC6 /* GetReposRequest.swift in Sources */,
 				02EF5E0E2591F12700700FC6 /* RepoTableViewCell.swift in Sources */,
+				023932C62591F51000F733AD /* UserDefaultsBacked.swift in Sources */,
 				02EF5DF82591E3A300700FC6 /* GetReposResponse.swift in Sources */,
 				0281617B2590C3C700C3FA0C /* AppDelegate.swift in Sources */,
 				0281617D2590C3C700C3FA0C /* SceneDelegate.swift in Sources */,
@@ -370,7 +382,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = den.kotliar.GithubReposMVVM;
+				PRODUCT_BUNDLE_IDENTIFIER = den.kotliar.GithubRepos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -390,7 +402,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = den.kotliar.GithubReposMVVM;
+				PRODUCT_BUNDLE_IDENTIFIER = den.kotliar.GithubRepos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -400,7 +412,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		028161722590C3C600C3FA0C /* Build configuration list for PBXProject "GithubReposMVVM" */ = {
+		028161722590C3C600C3FA0C /* Build configuration list for PBXProject "GithubRepos" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				028161892590C3C900C3FA0C /* Debug */,
@@ -409,7 +421,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0281618B2590C3C900C3FA0C /* Build configuration list for PBXNativeTarget "GithubReposMVVM" */ = {
+		0281618B2590C3C900C3FA0C /* Build configuration list for PBXNativeTarget "GithubRepos" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0281618C2590C3C900C3FA0C /* Debug */,
