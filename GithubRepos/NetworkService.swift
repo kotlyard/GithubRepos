@@ -20,13 +20,8 @@ final class NetworkService: NetworkServiceProvidable {
     func getRepos(request: GetReposRequest, _ completion: @escaping (GetReposResponse?, Error?) -> Void) {
         guard var urlComponents = URLComponents(string: getReposUrlString) else { return completion(nil, nil) }
 
-        let params = request.dictionary
-
-        urlComponents.query = params?.compactMap { (key, value) -> String in
-            "\(key)=\(value)"
-        }.joined(separator: "&")
+        urlComponents.query = formQuery(from: request.dictionary)
     
-        print(urlComponents.string)
         guard let url = urlComponents.url else { return completion(nil, nil) }
         
         let urlRequest = URLRequest(url: url)
@@ -38,10 +33,16 @@ final class NetworkService: NetworkServiceProvidable {
             }
             catch {
                 print(error)
+                completion(nil, error)
             }
         }
 
         task.resume()
     }
 
+    private func formQuery(from dictionary: [String: Any]?) -> String? {
+        dictionary?.compactMap { (key, value) -> String in
+            "\(key)=\(value)"
+        }.joined(separator: "&")
+    }
 }

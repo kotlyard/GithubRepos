@@ -9,17 +9,21 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Repos Search View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="GithubReposMVVM" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ReposSearchViewController" customModule="GithubRepos" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="vc5-xx-LDl">
-                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="vc5-xx-LDl">
+                                <rect key="frame" x="0.0" y="44" width="344" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="a0R-hC-Bmt"/>
                                 </connections>
@@ -32,26 +36,37 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="g4b-jG-iBP"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="coO-cD-cbT">
+                                <rect key="frame" x="350" y="55.5" width="54" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Search"/>
+                                <connections>
+                                    <action selector="searchTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="Oqd-Q6-bE2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="coO-cD-cbT" firstAttribute="centerY" secondItem="vc5-xx-LDl" secondAttribute="centerY" id="4Xc-or-x6Q"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="coO-cD-cbT" secondAttribute="trailing" constant="10" id="EiB-IJ-Hy7"/>
                             <constraint firstItem="JsL-gd-KhC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="FI0-Bp-6Dw"/>
                             <constraint firstItem="vc5-xx-LDl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="KuP-ET-KhR"/>
                             <constraint firstItem="vc5-xx-LDl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="MKI-Fp-A1Y"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="JsL-gd-KhC" secondAttribute="bottom" id="REY-OV-mOd"/>
-                            <constraint firstItem="vc5-xx-LDl" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Vtd-Nk-lbx"/>
                             <constraint firstItem="JsL-gd-KhC" firstAttribute="top" secondItem="vc5-xx-LDl" secondAttribute="bottom" id="gjw-0j-zS2"/>
+                            <constraint firstItem="coO-cD-cbT" firstAttribute="leading" secondItem="vc5-xx-LDl" secondAttribute="trailing" constant="6" id="x0w-pw-DTA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JsL-gd-KhC" secondAttribute="trailing" id="ycv-Yv-4WN"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="searchBar" destination="vc5-xx-LDl" id="rO9-V5-eAk"/>
                         <outlet property="tableView" destination="JsL-gd-KhC" id="huW-az-5Bd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="35" y="94"/>
+            <point key="canvasLocation" x="34.782608695652179" y="93.75"/>
         </scene>
     </scenes>
     <resources>

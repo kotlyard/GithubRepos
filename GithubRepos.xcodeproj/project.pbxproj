@@ -10,9 +10,10 @@
 		023932C62591F51000F733AD /* UserDefaultsBacked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023932C52591F51000F733AD /* UserDefaultsBacked.swift */; };
 		023932C92591F68000F733AD /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023932C82591F68000F733AD /* NetworkService.swift */; };
 		023932CC2592430400F733AD /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023932CB2592430400F733AD /* Owner.swift */; };
+		026A7169259247B200C3EDEC /* ReposPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026A7168259247B200C3EDEC /* ReposPresenter.swift */; };
 		0281617B2590C3C700C3FA0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281617A2590C3C700C3FA0C /* AppDelegate.swift */; };
 		0281617D2590C3C700C3FA0C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281617C2590C3C700C3FA0C /* SceneDelegate.swift */; };
-		0281617F2590C3C700C3FA0C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281617E2590C3C700C3FA0C /* ViewController.swift */; };
+		0281617F2590C3C700C3FA0C /* ReposSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281617E2590C3C700C3FA0C /* ReposSearchViewController.swift */; };
 		028161822590C3C700C3FA0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 028161802590C3C700C3FA0C /* Main.storyboard */; };
 		028161842590C3C900C3FA0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 028161832590C3C900C3FA0C /* Assets.xcassets */; };
 		028161872590C3C900C3FA0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 028161852590C3C900C3FA0C /* LaunchScreen.storyboard */; };
@@ -29,10 +30,11 @@
 		023932C52591F51000F733AD /* UserDefaultsBacked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsBacked.swift; sourceTree = "<group>"; };
 		023932C82591F68000F733AD /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		023932CB2592430400F733AD /* Owner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
+		026A7168259247B200C3EDEC /* ReposPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposPresenter.swift; sourceTree = "<group>"; };
 		028161772590C3C700C3FA0C /* GithubRepos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubRepos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0281617A2590C3C700C3FA0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0281617C2590C3C700C3FA0C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0281617E2590C3C700C3FA0C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0281617E2590C3C700C3FA0C /* ReposSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposSearchViewController.swift; sourceTree = "<group>"; };
 		028161812590C3C700C3FA0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		028161832590C3C900C3FA0C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		028161862590C3C900C3FA0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -77,8 +79,8 @@
 			isa = PBXGroup;
 			children = (
 				0281617A2590C3C700C3FA0C /* AppDelegate.swift */,
-				023932C82591F68000F733AD /* NetworkService.swift */,
 				0281617C2590C3C700C3FA0C /* SceneDelegate.swift */,
+				023932C82591F68000F733AD /* NetworkService.swift */,
 				02EF5DF52591E33D00700FC6 /* Models */,
 				02EF5E032591F0B000700FC6 /* ViewModels */,
 				02EF5E062591F0CB00700FC6 /* ViewControllers */,
@@ -122,7 +124,8 @@
 		02EF5E062591F0CB00700FC6 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				0281617E2590C3C700C3FA0C /* ViewController.swift */,
+				0281617E2590C3C700C3FA0C /* ReposSearchViewController.swift */,
+				026A7168259247B200C3EDEC /* ReposPresenter.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -216,10 +219,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				026A7169259247B200C3EDEC /* ReposPresenter.swift in Sources */,
 				023932C92591F68000F733AD /* NetworkService.swift in Sources */,
 				023932CC2592430400F733AD /* Owner.swift in Sources */,
 				02EF5DF32591E14400700FC6 /* RepoViewModel.swift in Sources */,
-				0281617F2590C3C700C3FA0C /* ViewController.swift in Sources */,
+				0281617F2590C3C700C3FA0C /* ReposSearchViewController.swift in Sources */,
 				02EF5DF02591E13C00700FC6 /* Repo.swift in Sources */,
 				02EF5E002591F04500700FC6 /* Encodable+Extensions.swift in Sources */,
 				02EF5DFD2591E59200700FC6 /* GetReposRequest.swift in Sources */,
@@ -376,7 +380,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QR6ALTN3DU;
-				INFOPLIST_FILE = GithubReposMVVM/Info.plist;
+				INFOPLIST_FILE = GithubRepos/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
