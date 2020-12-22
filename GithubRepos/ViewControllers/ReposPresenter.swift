@@ -16,10 +16,12 @@ final class ReposPresenter: NSObject {
 
     private let tableView: UITableView
 
+    let papa: ReposSearchViewController
 
-    init(tableView: UITableView) {
+    init(tableView: UITableView, papa: ReposSearchViewController) {
         self.tableView = tableView
 
+        self.papa = papa
         super.init()
 
         configurateViews()
@@ -62,13 +64,20 @@ extension ReposPresenter: UITableViewDataSource {
 
         return cell
     }
-    
-    
+
 }
 
 
 // MARK: - UITableViewDelegate
 extension ReposPresenter: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+
+        if indexPath.row == repos.count - 3 {
+            papa.loadNextPage()
+        }
+    
+    }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.backgroundColor = .lightGray
@@ -80,9 +89,7 @@ extension ReposPresenter: UITableViewDelegate {
         }
 
         guard let link = repo.link else { return }
-        UIApplication.shared.open(link,
-                                  options: [:],
-                                  completionHandler: nil)
+        UIApplication.shared.open(link)
     }
 
 }

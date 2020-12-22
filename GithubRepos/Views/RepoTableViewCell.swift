@@ -26,4 +26,10 @@ class RepoTableViewCell: UITableViewCell {
         starsCountLabel.text = "\(repo.starsCount)"
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        backgroundColor = .white
+    }
+
 }

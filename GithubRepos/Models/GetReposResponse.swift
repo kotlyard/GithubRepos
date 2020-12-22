@@ -11,6 +11,6 @@ struct GetReposResponse: Decodable {
 
     let total_count: Int
     let incomplete_results: Bool
-    let items: [Repo]
+    var items: [Repo]
 
 }

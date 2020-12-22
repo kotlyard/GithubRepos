@@ -18,6 +18,7 @@ class ReposSearchViewController: UIViewController {
 
     private let networkService: NetworkServiceProvidable = NetworkService()
     private var presenter: ReposPresenter!
+    private var lastSearchRequest: GetReposRequest?
 
     private var getReposResponse: GetReposResponse? {
         didSet {
@@ -30,7 +31,7 @@ class ReposSearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        presenter = ReposPresenter(tableView: tableView)
+        presenter = ReposPresenter(tableView: tableView, papa: self)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -39,16 +40,30 @@ class ReposSearchViewController: UIViewController {
         searchBar.becomeFirstResponder()
     }
 
-    private func searchRepos(query: String, page: Int = 0) {
+    private func searchRepos(query: String) {
         guard !query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
 
         var request = GetReposRequest()
         request.q = query
-        request.page = page
 
+        lastSearchRequest = request
         networkService.getRepos(request: request) { [weak self] (response, error) in
             self?.getReposResponse = response
         }
+    }
+
+    func loadNextPage() {
+        guard var request = lastSearchRequest else { return }
+        guard let response = getReposResponse,
+              response.total_count > response.items.count * request.per_page else { return }
+
+        request.page += 1
+        
+        networkService.getRepos(request: request) { [weak self] (response, error) in
+            self?.getReposResponse?.items.append(contentsOf: response!.items)
+        }
+        
+        lastSearchRequest = request
     }
 
     // MARK: - Actions
