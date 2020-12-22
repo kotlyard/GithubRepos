@@ -13,6 +13,13 @@
 		028161822590C3C700C3FA0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 028161802590C3C700C3FA0C /* Main.storyboard */; };
 		028161842590C3C900C3FA0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 028161832590C3C900C3FA0C /* Assets.xcassets */; };
 		028161872590C3C900C3FA0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 028161852590C3C900C3FA0C /* LaunchScreen.storyboard */; };
+		02EF5DF02591E13C00700FC6 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EF5DEF2591E13C00700FC6 /* Repo.swift */; };
+		02EF5DF32591E14400700FC6 /* RepoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EF5DF22591E14400700FC6 /* RepoViewModel.swift */; };
+		02EF5DF82591E3A300700FC6 /* GetReposResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EF5DF72591E3A300700FC6 /* GetReposResponse.swift */; };
+		02EF5DFD2591E59200700FC6 /* GetReposRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EF5DFC2591E59200700FC6 /* GetReposRequest.swift */; };
+		02EF5E002591F04500700FC6 /* Encodable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EF5DFF2591F04500700FC6 /* Encodable+Extensions.swift */; };
+		02EF5E0E2591F12700700FC6 /* RepoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EF5E0C2591F12700700FC6 /* RepoTableViewCell.swift */; };
+		02EF5E0F2591F12700700FC6 /* RepoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02EF5E0D2591F12700700FC6 /* RepoTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +31,13 @@
 		028161832590C3C900C3FA0C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		028161862590C3C900C3FA0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		028161882590C3C900C3FA0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		02EF5DEF2591E13C00700FC6 /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
+		02EF5DF22591E14400700FC6 /* RepoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoViewModel.swift; sourceTree = "<group>"; };
+		02EF5DF72591E3A300700FC6 /* GetReposResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReposResponse.swift; sourceTree = "<group>"; };
+		02EF5DFC2591E59200700FC6 /* GetReposRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReposRequest.swift; sourceTree = "<group>"; };
+		02EF5DFF2591F04500700FC6 /* Encodable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Extensions.swift"; sourceTree = "<group>"; };
+		02EF5E0C2591F12700700FC6 /* RepoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoTableViewCell.swift; sourceTree = "<group>"; };
+		02EF5E0D2591F12700700FC6 /* RepoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepoTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +72,68 @@
 			children = (
 				0281617A2590C3C700C3FA0C /* AppDelegate.swift */,
 				0281617C2590C3C700C3FA0C /* SceneDelegate.swift */,
-				0281617E2590C3C700C3FA0C /* ViewController.swift */,
-				028161802590C3C700C3FA0C /* Main.storyboard */,
+				02EF5DF52591E33D00700FC6 /* Models */,
+				02EF5E032591F0B000700FC6 /* ViewModels */,
+				02EF5E062591F0CB00700FC6 /* ViewControllers */,
+				02EF5E0A2591F10A00700FC6 /* Views */,
+				02EF5E052591F0C200700FC6 /* Scenes */,
+				02EF5E112591F33200700FC6 /* Shared */,
 				028161832590C3C900C3FA0C /* Assets.xcassets */,
-				028161852590C3C900C3FA0C /* LaunchScreen.storyboard */,
 				028161882590C3C900C3FA0C /* Info.plist */,
 			);
 			path = GithubReposMVVM;
+			sourceTree = "<group>";
+		};
+		02EF5DF52591E33D00700FC6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				02EF5DEF2591E13C00700FC6 /* Repo.swift */,
+				02EF5DFC2591E59200700FC6 /* GetReposRequest.swift */,
+				02EF5DF72591E3A300700FC6 /* GetReposResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		02EF5E032591F0B000700FC6 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				02EF5DF22591E14400700FC6 /* RepoViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		02EF5E052591F0C200700FC6 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				028161802590C3C700C3FA0C /* Main.storyboard */,
+				028161852590C3C900C3FA0C /* LaunchScreen.storyboard */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		02EF5E062591F0CB00700FC6 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				0281617E2590C3C700C3FA0C /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		02EF5E0A2591F10A00700FC6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				02EF5E0C2591F12700700FC6 /* RepoTableViewCell.swift */,
+				02EF5E0D2591F12700700FC6 /* RepoTableViewCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		02EF5E112591F33200700FC6 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				02EF5DFF2591F04500700FC6 /* Encodable+Extensions.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +196,7 @@
 				028161872590C3C900C3FA0C /* LaunchScreen.storyboard in Resources */,
 				028161842590C3C900C3FA0C /* Assets.xcassets in Resources */,
 				028161822590C3C700C3FA0C /* Main.storyboard in Resources */,
+				02EF5E0F2591F12700700FC6 /* RepoTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +207,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02EF5DF32591E14400700FC6 /* RepoViewModel.swift in Sources */,
 				0281617F2590C3C700C3FA0C /* ViewController.swift in Sources */,
+				02EF5DF02591E13C00700FC6 /* Repo.swift in Sources */,
+				02EF5E002591F04500700FC6 /* Encodable+Extensions.swift in Sources */,
+				02EF5DFD2591E59200700FC6 /* GetReposRequest.swift in Sources */,
+				02EF5E0E2591F12700700FC6 /* RepoTableViewCell.swift in Sources */,
+				02EF5DF82591E3A300700FC6 /* GetReposResponse.swift in Sources */,
 				0281617B2590C3C700C3FA0C /* AppDelegate.swift in Sources */,
 				0281617D2590C3C700C3FA0C /* SceneDelegate.swift in Sources */,
 			);
@@ -289,6 +365,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QR6ALTN3DU;
 				INFOPLIST_FILE = GithubReposMVVM/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -296,7 +373,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = den.kotliar.GithubReposMVVM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -308,6 +385,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QR6ALTN3DU;
 				INFOPLIST_FILE = GithubReposMVVM/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -315,7 +393,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = den.kotliar.GithubReposMVVM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
