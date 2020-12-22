@@ -1,5 +1,5 @@
 //
-//  RepoViewModel.swift
+//  RepoDispalayable.swift
 //  GithubReposMVVM
 //
 //  Created by kotl on 22.12.2020.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct RepoViewModel {
+struct RepoDispalayable {
 
     let id: Int
     let name: String

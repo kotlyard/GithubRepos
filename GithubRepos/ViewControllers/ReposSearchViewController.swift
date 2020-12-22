@@ -22,7 +22,7 @@ class ReposSearchViewController: UIViewController {
 
     private var getReposResponse: GetReposResponse? {
         didSet {
-            let repos = getReposResponse?.items.compactMap { RepoViewModel(with: $0) } ?? []
+            let repos = getReposResponse?.items.compactMap { RepoDispalayable(with: $0) } ?? []
             presenter.reloadReposTableView(with: repos)
         }
     }

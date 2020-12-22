@@ -20,7 +20,7 @@ class RepoTableViewCell: UITableViewCell {
         selectionStyle = .none
     }
 
-    func configurate(with repo: RepoViewModel) {
+    func configurate(with repo: RepoDispalayable) {
         nameLabel.text = repo.name
         ownerLoginLabel.text = repo.ownerLogin
         starsCountLabel.text = "\(repo.starsCount)"

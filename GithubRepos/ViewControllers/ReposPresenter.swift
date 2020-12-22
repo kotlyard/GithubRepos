@@ -12,7 +12,7 @@ final class ReposPresenter: NSObject {
     @UserDefaultsBacked(key: "reviewedRepoIds", defaultValue: [])
     private var reviewedRepoIds: [Int]
 
-    private var repos = [RepoViewModel]()
+    private var repos = [RepoDispalayable]()
 
     private let tableView: UITableView
 
@@ -35,7 +35,7 @@ final class ReposPresenter: NSObject {
         tableView.dataSource = self
     }
 
-    func reloadReposTableView(with repos: [RepoViewModel]) {
+    func reloadReposTableView(with repos: [RepoDispalayable]) {
         DispatchQueue.main.async { [weak self] in
             self?.repos = repos
             self?.tableView.reloadData()

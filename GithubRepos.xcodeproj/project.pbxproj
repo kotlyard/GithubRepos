@@ -18,7 +18,7 @@
 		028161842590C3C900C3FA0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 028161832590C3C900C3FA0C /* Assets.xcassets */; };
 		028161872590C3C900C3FA0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 028161852590C3C900C3FA0C /* LaunchScreen.storyboard */; };
 		02EF5DF02591E13C00700FC6 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EF5DEF2591E13C00700FC6 /* Repo.swift */; };
-		02EF5DF32591E14400700FC6 /* RepoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EF5DF22591E14400700FC6 /* RepoViewModel.swift */; };
+		02EF5DF32591E14400700FC6 /* RepoDispalayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EF5DF22591E14400700FC6 /* RepoDispalayable.swift */; };
 		02EF5DF82591E3A300700FC6 /* GetReposResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EF5DF72591E3A300700FC6 /* GetReposResponse.swift */; };
 		02EF5DFD2591E59200700FC6 /* GetReposRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EF5DFC2591E59200700FC6 /* GetReposRequest.swift */; };
 		02EF5E002591F04500700FC6 /* Encodable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EF5DFF2591F04500700FC6 /* Encodable+Extensions.swift */; };
@@ -40,7 +40,7 @@
 		028161862590C3C900C3FA0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		028161882590C3C900C3FA0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02EF5DEF2591E13C00700FC6 /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
-		02EF5DF22591E14400700FC6 /* RepoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoViewModel.swift; sourceTree = "<group>"; };
+		02EF5DF22591E14400700FC6 /* RepoDispalayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDispalayable.swift; sourceTree = "<group>"; };
 		02EF5DF72591E3A300700FC6 /* GetReposResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReposResponse.swift; sourceTree = "<group>"; };
 		02EF5DFC2591E59200700FC6 /* GetReposRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReposRequest.swift; sourceTree = "<group>"; };
 		02EF5DFF2591F04500700FC6 /* Encodable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Extensions.swift"; sourceTree = "<group>"; };
@@ -82,7 +82,7 @@
 				0281617C2590C3C700C3FA0C /* SceneDelegate.swift */,
 				023932C82591F68000F733AD /* NetworkService.swift */,
 				02EF5DF52591E33D00700FC6 /* Models */,
-				02EF5E032591F0B000700FC6 /* ViewModels */,
+				02EF5E032591F0B000700FC6 /* DisplayableModels */,
 				02EF5E062591F0CB00700FC6 /* ViewControllers */,
 				02EF5E0A2591F10A00700FC6 /* Views */,
 				02EF5E052591F0C200700FC6 /* Scenes */,
@@ -104,12 +104,12 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		02EF5E032591F0B000700FC6 /* ViewModels */ = {
+		02EF5E032591F0B000700FC6 /* DisplayableModels */ = {
 			isa = PBXGroup;
 			children = (
-				02EF5DF22591E14400700FC6 /* RepoViewModel.swift */,
+				02EF5DF22591E14400700FC6 /* RepoDispalayable.swift */,
 			);
-			path = ViewModels;
+			path = DisplayableModels;
 			sourceTree = "<group>";
 		};
 		02EF5E052591F0C200700FC6 /* Scenes */ = {
@@ -222,7 +222,7 @@
 				026A7169259247B200C3EDEC /* ReposPresenter.swift in Sources */,
 				023932C92591F68000F733AD /* NetworkService.swift in Sources */,
 				023932CC2592430400F733AD /* Owner.swift in Sources */,
-				02EF5DF32591E14400700FC6 /* RepoViewModel.swift in Sources */,
+				02EF5DF32591E14400700FC6 /* RepoDispalayable.swift in Sources */,
 				0281617F2590C3C700C3FA0C /* ReposSearchViewController.swift in Sources */,
 				02EF5DF02591E13C00700FC6 /* Repo.swift in Sources */,
 				02EF5E002591F04500700FC6 /* Encodable+Extensions.swift in Sources */,
