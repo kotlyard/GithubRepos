@@ -9,19 +9,26 @@ import UIKit
 
 class ReposSearchViewController: UIViewController {
 
-    private var repos = [RepoViewModel]() {
+    // MARK: - Outlets
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var searchBar: UISearchBar!
+
+
+    // MARK: - Variables
+    private var getReposResponse: GetReposResponse? {
         didSet {
+            let repos = getReposResponse?.items.compactMap { RepoViewModel(with: $0) } ?? []
+            guard !repos.isEmpty else { return }
+
             presenter.reloadReposTableView(with: repos)
         }
     }
 
     private let networkService: NetworkServiceProvidable = NetworkService()
     private var presenter: ReposPresenter!
-
-
-    @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var searchBar: UISearchBar!
     
+
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,12 +48,11 @@ class ReposSearchViewController: UIViewController {
         request.q = query
 
         networkService.getRepos(request: request) { (response, error) in
-//            print(response)
-            guard let repos = response else { return }
-            self.repos = repos.items.map { RepoViewModel(with: $0) }
+            self.getReposResponse = response
         }
     }
 
+    // MARK: - Actions
     @IBAction private func searchTapped() {
         guard let text = searchBar.text else { return }
 
