@@ -7,16 +7,11 @@
 
 import UIKit
 
-
-protocol ReposPresenterDelegate: class {
-
-    func repoCellTapped(_ repo: RepoViewModel)
-
-}
-
 final class ReposPresenter: NSObject {
     
-    weak var delegate: ReposPresenterDelegate?
+    @UserDefaultsBacked(key: "reviewedRepoIds", defaultValue: [])
+    private var reviewedRepoIds: [Int]
+
     private var repos = [RepoViewModel]()
 
     private let tableView: UITableView
@@ -51,11 +46,19 @@ extension ReposPresenter: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         repos.count
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: "repoCell", for: indexPath) as! RepoTableViewCell
-        cell.configurate(with: repos[indexPath.row])
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let repo = repos[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "repoCell",
+                                                 for: indexPath) as! RepoTableViewCell
+        cell.configurate(with: repo)
+
+        if reviewedRepoIds.contains(repo.id) {
+            cell.backgroundColor = .lightGray
+        } else {
+            cell.backgroundColor = .white
+        }
+
         return cell
     }
     
@@ -65,12 +68,15 @@ extension ReposPresenter: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension ReposPresenter: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
 
-        let repo = repos[indexPath.row]
-        delegate?.repoCellTapped(repo)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.backgroundColor = .lightGray
+
+        let repoId = repos[indexPath.row].id
+
+        if !reviewedRepoIds.contains(repoId) {
+            reviewedRepoIds.append(repoId)
+        }
     }
 
 }

@@ -13,6 +13,13 @@ class RepoTableViewCell: UITableViewCell {
     @IBOutlet private weak var ownerLoginLabel: UILabel!
     @IBOutlet private weak var starsCountLabel: UILabel!
 
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        selectionStyle = .none
+    }
+
     func configurate(with repo: RepoViewModel) {
         nameLabel.text = repo.name
         ownerLoginLabel.text = repo.ownerLogin

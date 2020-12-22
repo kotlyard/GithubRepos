@@ -18,8 +18,6 @@ class ReposSearchViewController: UIViewController {
     private let networkService: NetworkServiceProvidable = NetworkService()
     private var presenter: ReposPresenter!
 
-    @UserDefaultsBacked(key: "reviewedRepoIds", defaultValue: [])
-    private var reviewedRepoIds: [Int]
 
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
@@ -49,18 +47,10 @@ class ReposSearchViewController: UIViewController {
         }
     }
 
-    @IBAction func searchTapped() {
-        guard let text = searchBar.text,
-              !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
+    @IBAction private func searchTapped() {
+        guard let text = searchBar.text else { return }
+
         searchRepos(query: text)
     }
 
-}
-
-extension ReposSearchViewController: ReposPresenterDelegate {
-
-    func repoCellTapped(_ repo: RepoViewModel) {
-
-    }
-    
 }
