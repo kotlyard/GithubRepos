@@ -7,8 +7,15 @@
 
 import UIKit
 
+protocol ReposPresenterDelegate: class {
+
+    func loadNextPage()
+
+}
+
 final class ReposPresenter: NSObject {
-    
+
+    /// Contains id of alredy reviewed repositories
     @UserDefaultsBacked(key: "reviewedRepoIds", defaultValue: [])
     private var reviewedRepoIds: [Int]
 
@@ -16,12 +23,12 @@ final class ReposPresenter: NSObject {
 
     private let tableView: UITableView
 
-    let papa: ReposSearchViewController
+    weak var delegate: ReposPresenterDelegate?
 
-    init(tableView: UITableView, papa: ReposSearchViewController) {
+
+    init(tableView: UITableView) {
         self.tableView = tableView
 
-        self.papa = papa
         super.init()
 
         configurateViews()
@@ -59,7 +66,7 @@ extension ReposPresenter: UITableViewDataSource {
         if reviewedRepoIds.contains(repo.id) {
             cell.backgroundColor = .lightGray
         } else {
-            cell.backgroundColor = .white
+//            cell.backgroundColor = .white
         }
 
         return cell
@@ -74,9 +81,9 @@ extension ReposPresenter: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 
         if indexPath.row == repos.count - 3 {
-            papa.loadNextPage()
+            delegate?.loadNextPage()
         }
-    
+
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

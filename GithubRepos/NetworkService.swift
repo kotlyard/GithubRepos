@@ -21,13 +21,14 @@ final class NetworkService: NetworkServiceProvidable {
         guard var urlComponents = URLComponents(string: getReposUrlString) else { return completion(nil, nil) }
 
         urlComponents.query = formQuery(from: request.dictionary)
-    
+        print(urlComponents.url!)
         guard let url = urlComponents.url else { return completion(nil, nil) }
         
         let urlRequest = URLRequest(url: url)
         let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             guard let data = data else { return completion(nil, error) }
             do {
+//                print(String(data: data, encoding: .utf8))
                 let decoded = try JSONDecoder().decode(GetReposResponse.self, from: data)
                 completion(decoded, nil)
             }

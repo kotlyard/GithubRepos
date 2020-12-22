@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ReposSearchViewController: UIViewController {
+final class ReposSearchViewController: UIViewController {
 
     // MARK: - Outlets
     @IBOutlet private weak var tableView: UITableView!
@@ -15,14 +15,15 @@ class ReposSearchViewController: UIViewController {
 
 
     // MARK: - Variables
-
     private let networkService: NetworkServiceProvidable = NetworkService()
     private var presenter: ReposPresenter!
     private var lastSearchRequest: GetReposRequest?
 
     private var getReposResponse: GetReposResponse? {
         didSet {
-            let repos = getReposResponse?.items.compactMap { RepoDispalayable(with: $0) } ?? []
+            let repos = getReposResponse?
+                .items
+                .compactMap { RepoDispalayable(with: $0) } ?? []
             presenter.reloadReposTableView(with: repos)
         }
     }
@@ -31,7 +32,8 @@ class ReposSearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        presenter = ReposPresenter(tableView: tableView, papa: self)
+        presenter = ReposPresenter(tableView: tableView)
+        presenter.delegate = self
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -46,23 +48,9 @@ class ReposSearchViewController: UIViewController {
         var request = GetReposRequest()
         request.q = query
 
-        lastSearchRequest = request
         networkService.getRepos(request: request) { [weak self] (response, error) in
             self?.getReposResponse = response
         }
-    }
-
-    func loadNextPage() {
-        guard var request = lastSearchRequest else { return }
-        guard let response = getReposResponse,
-              response.total_count > response.items.count * request.per_page else { return }
-
-        request.page += 1
-        
-        networkService.getRepos(request: request) { [weak self] (response, error) in
-            self?.getReposResponse?.items.append(contentsOf: response!.items)
-        }
-        
         lastSearchRequest = request
     }
 
@@ -71,6 +59,26 @@ class ReposSearchViewController: UIViewController {
         guard let text = searchBar.text else { return }
 
         searchRepos(query: text)
+    }
+
+}
+
+// MARK: - ReposPresenterDelegate
+extension ReposSearchViewController: ReposPresenterDelegate {
+
+    func loadNextPage() {
+        guard var request = lastSearchRequest else { return }
+        guard let response = getReposResponse,
+              response.total_count > response.items.count * request.per_page else { return }
+
+        request.page += 1
+
+        networkService.getRepos(request: request) { [weak self] (response, error) in
+            guard let repos = response?.items else { return }
+            self?.getReposResponse?.items.append(contentsOf: repos)
+        }
+
+        lastSearchRequest = request
     }
 
 }
