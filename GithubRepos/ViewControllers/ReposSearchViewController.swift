@@ -15,18 +15,16 @@ class ReposSearchViewController: UIViewController {
 
 
     // MARK: - Variables
-    private var getReposResponse: GetReposResponse? {
-        didSet {
-            let repos = getReposResponse?.items.compactMap { RepoViewModel(with: $0) } ?? []
-            guard !repos.isEmpty else { return }
-
-            presenter.reloadReposTableView(with: repos)
-        }
-    }
 
     private let networkService: NetworkServiceProvidable = NetworkService()
     private var presenter: ReposPresenter!
-    
+
+    private var getReposResponse: GetReposResponse? {
+        didSet {
+            let repos = getReposResponse?.items.compactMap { RepoViewModel(with: $0) } ?? []
+            presenter.reloadReposTableView(with: repos)
+        }
+    }
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -37,18 +35,19 @@ class ReposSearchViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         searchBar.becomeFirstResponder()
     }
 
-    private func searchRepos(query: String) {
+    private func searchRepos(query: String, page: Int = 0) {
         guard !query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
 
         var request = GetReposRequest()
         request.q = query
+        request.page = page
 
-        networkService.getRepos(request: request) { (response, error) in
-            self.getReposResponse = response
+        networkService.getRepos(request: request) { [weak self] (response, error) in
+            self?.getReposResponse = response
         }
     }
 

@@ -73,11 +73,16 @@ extension ReposPresenter: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.backgroundColor = .lightGray
 
-        let repoId = repos[indexPath.row].id
+        let repo = repos[indexPath.row]
 
-        if !reviewedRepoIds.contains(repoId) {
-            reviewedRepoIds.append(repoId)
+        if !reviewedRepoIds.contains(repo.id) {
+            reviewedRepoIds.append(repo.id)
         }
+
+        guard let link = repo.link else { return }
+        UIApplication.shared.open(link,
+                                  options: [:],
+                                  completionHandler: nil)
     }
 
 }
